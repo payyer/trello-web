@@ -3,11 +3,74 @@ import AccessAlarmIcon from '@mui/icons-material/AccessAlarm'
 import ThreeDRotation from '@mui/icons-material/ThreeDRotation'
 import HomeIcon from '@mui/icons-material/Home'
 import { pink } from '@mui/material/colors'
-function App() {
+import { useColorScheme } from '@mui/material/styles'
+import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+// import useMediaQuery from '@mui/material/useMediaQuery'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness'
+function ModeSelect() {
+  const { mode, setMode } = useColorScheme('system')
+  const handleChange = (event) => {
+    const selectedMode = event.target.value
+    setMode(selectedMode)
+  }
+  return (
+    <div>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="label-select-dark-light-mode">Mode</InputLabel>
+        <Select
+          labelId="label-select-dark-light-mode"
+          id="select-dark-light-mode"
+          value={mode}
+          onChange={handleChange}
+          label="Mode"
+        >
+          <MenuItem value={'system'}>
+            <Box sx={{ display: 'flex', alignItems:'center', gap: 1 }}>
+              <SettingsBrightnessIcon/>System
+            </Box>
+          </MenuItem>
 
+          <MenuItem value={'light'}>
+            <Box sx={{ display: 'flex', alignItems:'center', gap: 1 }}>
+              <LightModeIcon/>Light
+            </Box>
+          </MenuItem>
+
+          <MenuItem value={'dark'}>
+            <Box sx={{ display: 'flex', alignItems:'center', gap: 1 }}>
+              <Brightness4Icon/>Dark
+            </Box>
+          </MenuItem>
+
+        </Select>
+      </FormControl>
+    </div>
+  )
+}
+
+function ModeToggle() {
+  const { mode, setMode } = useColorScheme()
+  return (
+    <Button
+      onClick={() => {
+        setMode(mode === 'light' ? 'dark' : 'light')
+      }}
+    >
+      {mode === 'light' ? 'Turn dark' : 'Turn light'}
+    </Button>
+  )
+}
+
+function App() {
   return (
     <>
+      <ModeSelect/>
+      <hr />
+      <ModeToggle/>
       <h1>Hello con gà mái</h1>
+
       <Button variant="text">Text</Button>
       <Button variant="contained">Contained</Button>
       <Button variant="outlined">Outlined</Button>
