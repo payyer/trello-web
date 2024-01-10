@@ -20,6 +20,65 @@ const theme = extendTheme({
         secondary: orange
       }
     }
+  },
+  components: {
+    // CSS scroll bar đẹp vl ở đây
+    MuiCssBaseline: {
+      styleOverrides: {
+        body : {
+          '*::-webkit-scrollbar': {
+            width: '8px',
+            height: '8px'
+          },
+          '*::-webkit-scrollbar-thumb': {
+            backgroundColor: '#bdc3c7',
+            borderRadius: '8px'
+          },
+          '*::-webkit-scrollbar-thumb: hover': {
+            backgroundColor: '#00b894',
+            borderRadius: '8px'
+          }
+        }
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none'
+        }
+      }
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: ({ theme }) => {
+          return {
+            color: theme.palette.primary.main
+          }
+        }
+      }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: ({ theme }) => {
+          return {
+            color: theme.palette.primary.main,
+            fontSize: '0.875rem',
+            '.MuiOutlinedInput-notchedOutline' : {
+              borderColor: theme.palette.primary.light
+            },
+            '&:hover' : {
+              '.MuiOutlinedInput-notchedOutline' : {
+                borderColor: theme.palette.primary.main
+              }
+            },
+            // Xóa outline focus với MUI Lưu ý nha
+            '& fieldset': {
+              borderWidth: '1px !important'
+            }
+          }
+        }
+      }
+    }
   }
 })
 export default theme
