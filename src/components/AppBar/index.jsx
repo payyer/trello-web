@@ -15,6 +15,8 @@ import Badge from '@mui/material/Badge'
 import Tooltip from '@mui/material/Tooltip'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import Profiles from './Menus/Profiles'
+import QueueIcon from '@mui/icons-material/Queue'
+
 function AppBar() {
   return (
     <Box px={2}
@@ -39,12 +41,12 @@ function AppBar() {
           <Typography variant='span' sx={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'primary.main' }} >Trello</Typography>
         </Box>
 
-        <Box sx={{ display: { xs:'none', md: 'flex', gap: 1 } }}>
+        <Box sx={{ display: { xs:'none', md: 'flex', gap: 2 } }}>
           <WorkSpaces/>
           <Recent/>
           <Starred/>
           <Templates/>
-          <Button variant="outlined">Create</Button>
+          <Button variant="outlined" startIcon={<QueueIcon/>}>Create</Button>
         </Box>
 
       </Box>
